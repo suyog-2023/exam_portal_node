@@ -1,0 +1,62 @@
+<%-include('nav.ejs')%>
+
+<style>
+    .my_active_button{
+        background-color: black;
+        color: white;
+    }
+    a{
+        text-decoration: none !important;
+    }
+</style>
+
+
+<div class="container-fluid bg-white p-3 mb-2">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>All Questions List</h3>
+        </div>
+
+        <div class="col-md-12 mb-3 mt-2">
+            <a href="/admin/question_list">
+                <button class="btn-grey btn-lg  "><span style="font-size:18px;"> All Subjects </span> <i class="fa fa-angle-double-right	
+                "></i> </button>
+            </a>
+            <% for(i=0; i<subjects.length;i++) { %>
+                <a href="/admin/question_list?subject_id=<%=subjects[i]['subject_id']%>">
+                    <button class="btn-success btn-lg <%=(active_tab==subjects[i]['subject_id']) ? 'my_active_button' : '' %>"><span style="font-size:15px;"><%=subjects[i]['subject_name']%></span></button>
+                </a>
+            <% } %>
+        </div>
+
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <tr>
+                    <th width="1%"></th>
+                    <th>Sr NO</th>
+                    <th>Subject</th>
+                    <th>Question</th>
+                    <th>Answer</th>
+                </tr>
+
+                <% for(i=0; i<questions.length; i++) { %>
+                    <tr>
+                        <td>
+                            <a href="/admin/question_details/<%=questions[i]['question_tbl_id']%>">
+                                <button class="btn btn-sm btn-dark"><i class="fa fa-info-circle"></i></button>
+                            </a>
+                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                        </td>
+                        <td><%=i+1%></td>
+                        <th><%=questions[i]['subject_name']%></th>
+                        <td><%=questions[i]['question']%></td>
+                        <td><span class="text-uppercase"><%=questions[i]['correct_ans']%> :</span> <%=questions[i]['option_'+questions[i]['correct_ans']]%></td>
+                    </tr>
+                <% } %>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<%-include('footer.ejs')%>

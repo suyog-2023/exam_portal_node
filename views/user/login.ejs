@@ -1,0 +1,73 @@
+<%- include("nav.ejs")%>
+<br><br>
+                
+                
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4 shadow border p-4">
+                            <form action="/login_now" method="post">
+                                <div id="loginform">
+                                    <h4 class="text-center mt-4">Login Form</h4>
+                                    <br>
+                                    Enter the Mobile
+                                    <input type="number" class="form-control" name="mobile">
+                                    <br>
+                                    Enter Password
+                                    <input type="password" class="form-control" name="password">
+                                    <button class="btn btn-primary form-control">Login Now</button>
+                                    <button type="button" class="btn form-control btn-warning mb-3" onclick="opentab(createaccountform, loginform)">Create Account</button>
+                    
+                                </div>
+                            </form>
+
+                            <form action="/register_user" method="post">
+                                <div id="createaccountform" style="display: none;">
+                                    <h4 class="text-center mt-4">Create Account Form</h4>
+                                    <br>
+                                    Enter the Name
+                                    <input type="text" class="form-control" name="user_name">
+                                    <br>
+                                    Enter the Mobile
+                                    <input type="number" class="form-control" name="mobile">
+                                    <br>
+                                    Enter Password
+                                    <input type="password" class="form-control" name="password" id="password1" onkeyup="check_password(password1, password2)">
+                                    <span id="password_error1"></span>
+                                    <br>
+                                    Confirm Password
+                                    <input type="password" class="form-control" id="password2" onkeyup="check_password(password1, password2)">
+                                    <span id="password_error"></span>
+                                    <button class="btn btn-primary form-control">Register Now</button>
+                                    <button class="btn form-control btn-warning mb-3" onclick="opentab(loginform, createaccountform)">Login</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <script>
+                    function check_password(p1, p2){
+                        if(p1.value.length>5){
+                            $("#password_error1").html("");
+                                
+                            if(p1.value==p2.value){
+                            $("#password_error").html("");
+                            }
+                            else{
+                                $("#password_error").html("Password is not same");
+                            }
+                        }else{
+                            $("#password_error1").html("Password is too short");
+                        }
+                    }
+
+                    function opentab(show, hide){
+                        show.style.display = "block";
+                        hide.style.display = "none";
+
+                    }
+                </script>
+                        
+
+<%- include("footer.ejs")%> 

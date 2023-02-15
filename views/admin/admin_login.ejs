@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="/vendors/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="/vendors/chartist/chartist.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="/images/favicon.png" />
+</head>
+
+<body>
+<br><br>
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4 shadow border p-4">
+            <form action="/login_now" method="post">
+                <div id="loginform">
+                    <h4 class="text-center mt-4">Admin Login Form</h4>
+                    <br>
+                    Enter the Mobile
+                    <input type="number" class="form-control" name="mobile">
+                    <br>
+                    Enter Password
+                    <input type="password" class="form-control" name="password"><br>
+                    <button class="btn btn-primary form-control">Login Now</button><br><br>
+                    <button type="button" class="btn form-control btn-warning mb-3"
+                        onclick="opentab(createAdminaccountform, loginform)">Create Account</button>
+                </div>
+            </form>
+
+            <form action="/admin/register_admin" method="post">
+                <div id="createAdminaccountform" style="display: none;">
+                    <h4 class="text-center mt-4">Create Admin Account</h4>
+                    <br>
+                    Enter the Name
+                    <input type="text" class="form-control" name="admin_name">
+                    <br>
+                    Enter the Mobile
+                    <input type="number" class="form-control" name="mobile">
+                    <br>
+                    Enter Password
+                    <input type="password" class="form-control" name="password" id="password1"
+                        onkeyup="check_password(password1, password2)">
+                    <span id="password_error1"></span>
+                    <br>
+                    Confirm Password
+                    <input type="password" class="form-control" id="password2"
+                        onkeyup="check_password(password1, password2)"><br>
+                    <span id="password_error"></span>
+                    <button class="btn btn-primary form-control">Register Now</button><br><br>
+                    <button type="button" class="btn form-control btn-warning mb-3"
+                        onclick="opentab(loginform, createAdminaccountform)">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function check_password(p1, p2) {
+        if (p1.value.length > 5) {
+            $("#password_error1").html("");
+
+            if (p1.value == p2.value) {
+                $("#password_error").html("");
+            }
+            else {
+                $("#password_error").html("Password is not same");
+            }
+        } else {
+            $("#password_error1").html("Password is too short");
+        }
+    }
+
+    function opentab(show, hide) {
+        show.style.display = "block";
+        hide.style.display = "none";
+
+    }
+</script>

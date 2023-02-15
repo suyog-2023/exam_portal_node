@@ -1,0 +1,44 @@
+<%-include('nav.ejs')%>
+
+    <form action="/admin/save_subject" method="post">
+        <div class="container-fluid p-3 bg-white">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-center mb-4">Add new Subject </h2>
+                </div>
+                <div class="col-md-12">
+                    <label for="">Enter Subject Name</label>
+                    <input type="text" name="subject_name" class="form-control">
+                </div>
+                <div class="col-md-12 text-center mt-3">
+                    <button class="btn btn-success">Add Subject</button>
+                </div>
+            </div>
+        </div>
+    </form><br><br>
+
+    <div class="container-fluid p-3 bg-white">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center mb-4">All Subject list </h2>
+            </div>
+            <div class="col-md-12">
+                <table class="table table-bordered table-sm">   
+                    <tr class="text-center">
+                        <th>Sr. no</th>
+                        <th>Subject Name</th>
+                    </tr>
+                    <% for(i = 0; i<subjects.length;i++){ %>
+                        <tr class="text-center">
+                            <td><%=i+1%></td>
+                            <td><%=subjects[i].subject_name%></td>
+                        </tr>
+                    <% } %>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <%=subjects%> -->
+<%-include('footer.ejs')%>

@@ -1,0 +1,38 @@
+<%-include('nav.ejs')%>
+
+
+<div class="container-fluid p-3 bg-white">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center mb-4">Test List</h2>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-bordered table-sm">
+                <tr>
+                    <th width="1%"></th>
+                    <th>S no</th>
+                    <th>Test Title</th>
+                    <th>Subject</th>
+                    <th>Total Questions</th>
+                    <th>Total Marks</th>
+                    <th>Duration</th>
+                </tr>
+
+                <% for(i=0; i<test_list.length; i++) { %>
+                    <tr>
+                        <td><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button></td>
+                        <td><%=i+1%></td>
+                        <td><%=test_list[i].test_title%></td>
+                        <td><%=test_list[i].subject_name%></td>
+                        <td><%=test_list[i].no_of_questions%> Que</td>
+                        <td><%=test_list[i].total_marks%> Marks</td>
+                        <td><%=test_list[i].test_duration%> Min </td>
+                    </tr>
+                <% } %>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<%-include('footer.ejs')%>

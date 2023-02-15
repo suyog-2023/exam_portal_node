@@ -1,0 +1,67 @@
+<%-include('nav.ejs')%>
+
+<style>
+    textarea, input, select{
+        border: 1px solid black !important;
+        border-radius: 15px !important;
+    }
+</style>
+<form action="/admin/save_question" method="post">
+    <div class="container-fluid bg-white p-3 mb-2">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Add New Questions</h3>
+            </div>
+            <div class="col-md-12 mb-3">
+                <label> Enter Questions</label>
+                <textarea name="question" class="form-control"></textarea>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Option - A</label>
+                <input name="option_a" class="form-control">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Option - B</label>
+                <input name="option_b" class="form-control">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Option - C</label>
+                <input name="option_c" class="form-control">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label>Option - D</label>
+                <input name="option_d" class="form-control">
+            </div>
+
+            <div class="col-md-12 mb-3">
+                <label>Description of Answer</label>
+                <textarea name="ans_desc" class="form-control"></textarea>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Correct Answer</label>
+                <select name="correct_ans" class="form-control">
+                    <option disabled selected value="">Select Answer</option>
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                    <option value="d">D</option>
+                </select>
+            </div>
+                <div class="col-md-6 mb-3">
+                    <label>Select Subject</label>
+                    <select name="subject_id" class="form-control">
+                        <option disabled selected value="">Question Subject</option>
+                        <% for(i=0;i<subjects.length;i++) { %>
+                            <option value="<%=subjects[i]['subject_id']%>"><%=subjects[i]['subject_name']%></option>
+                        <% } %>
+                    </select>
+                </div>
+
+                <div class="col-md-12 mb-3 text-right">
+                    <button class="btn btn-success">Save Question</button>
+                </div>
+        </div>
+    </div>
+</form>
+<%-include('footer.ejs')%>
